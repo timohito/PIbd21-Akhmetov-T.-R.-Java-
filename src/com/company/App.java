@@ -12,8 +12,10 @@ public class App {
     private final JButton down = new JButton();
     private final JButton left = new JButton();
     private final JButton right = new JButton();
-    private final JButton createButton = new JButton("Create");
-    private Bulldozer bulldozer;
+    private final JButton createTransportButton = new JButton("Create Transport");
+    private final JButton createDozerButton = new JButton("Create Dozer");
+    private ITransport transport;
+    private int numType = 1;
 
     /**
      * Launch the application.
@@ -24,76 +26,116 @@ public class App {
 
     private void initialize() {
         int width = 950;
-        int height = 600;
+        int height = 400;
         frame = new JFrame();
         frame.setBounds(100, 100, 1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-        DozerPanel panel = new DozerPanel();
+        CarPanel panel = new CarPanel();
         panel.setBorder(new BevelBorder(BevelBorder.LOWERED,
                 null, null, null, null));
         panel.setBounds(10, 11, width, height);
         frame.getContentPane().add(panel);
-        setupButton(up, "strUp", 65, 630);
-        setupButton(down, "strBottom", 65, 690);
-        setupButton(left, "strLeft", 5, 690);
-        setupButton(right, "strRight", 125, 690);
-        createButton.addActionListener(e -> {
-            bulldozer = new Bulldozer(100, 1000, Color.BLACK, Color.ORANGE, true, true);
-            bulldozer.setPosition(10, 10, width, height);
-            panel.setBulldozer(bulldozer);
+        setupButton(up, "up", 65, height + 30);
+        setupButton(down, "down", 65, height + 90);
+        setupButton(left, "left", 5, height + 90);
+        setupButton(right, "right", 125, height + 90);
+        createTransportButton.addActionListener(e -> {
+            transport = new Car(100, 1000, Color.BLUE);
+            transport.setPosition(10, 10, width, height);
+            panel.setTransport(transport);
             panel.repaint();
         });
-        createButton.setBounds(200, 645, 100, 50);
-        frame.getContentPane().add(createButton);
+        createTransportButton.setBounds(200, height + 45, 100, 50);
+        frame.getContentPane().add(createTransportButton);
+        createDozerButton.addActionListener(e -> {
+            transport = new Dozer(100, 1000, Color.BLUE, Color.green, 90, 50, true, true, 3, numType);
+            transport.setPosition(10, 10, width, height);
+            panel.setTransport(transport);
+            panel.repaint();
+        });
+        createDozerButton.setBounds(500, height + 45, 100, 50);
+        frame.getContentPane().add(createDozerButton);
         up.addActionListener(e -> {
-            if(bulldozer != null){
-                bulldozer.moveTransport(Direction.Up);
+            if (transport != null) {
+                transport.moveTransport(Direction.Up);
                 panel.repaint();
             }
         });
         down.addActionListener(e -> {
-            if(bulldozer != null){
-                bulldozer.moveTransport(Direction.Down);
+            if (transport != null) {
+                transport.moveTransport(Direction.Down);
                 panel.repaint();
             }
         });
         left.addActionListener(e -> {
-            if(bulldozer != null){
-                bulldozer.moveTransport(Direction.Left);
+            if (transport != null) {
+                transport.moveTransport(Direction.Left);
                 panel.repaint();
             }
         });
         right.addActionListener(e -> {
-            if(bulldozer != null){
-                bulldozer.moveTransport(Direction.Right);
+            if (transport != null) {
+                transport.moveTransport(Direction.Right);
                 panel.repaint();
             }
         });
 
-        JButton threeRollers = new JButton("5");
-        threeRollers.setBounds(310, 645, 50, 50);
+        JButton threeRollers = new JButton("3");
+        threeRollers.setBounds(310, height + 45, 50, 50);
         frame.getContentPane().add(threeRollers);
         threeRollers.addActionListener(e -> {
-            bulldozer.drawingRollers.setConfig(3);
+            if (transport != null && transport.getClass() == Dozer.class) {
+                Dozer dozer = (Dozer) transport;
+                dozer.setNumRollers(3);
+            }
             panel.repaint();
         });
 
         JButton fourRollers = new JButton("4");
-        fourRollers.setBounds(370, 645, 50, 50);
+        fourRollers.setBounds(370, height + 45, 50, 50);
         frame.getContentPane().add(fourRollers);
         fourRollers.addActionListener(e -> {
-            bulldozer.drawingRollers.setConfig(4);
+
+            if (transport != null && transport.getClass() == Dozer.class) {
+                Dozer dozer = (Dozer) transport;
+                dozer.setNumRollers(4);
+            }
             panel.repaint();
         });
 
-        JButton fiveRollers = new JButton("3");
-        fiveRollers.setBounds(430, 645, 50, 50);
+        JButton fiveRollers = new JButton("5");
+        fiveRollers.setBounds(430, height + 45, 50, 50);
         frame.getContentPane().add(fiveRollers);
         fiveRollers.addActionListener(e -> {
-            bulldozer.drawingRollers.setConfig(5);
+            if (transport != null && transport.getClass() == Dozer.class) {
+                Dozer dozer = (Dozer) transport;
+                dozer.setNumRollers(5);
+            }
             panel.repaint();
         });
+
+        JButton standardRollers = new JButton("Standard Rollers");
+        standardRollers.setBounds(310, height + 100, 200, 50);
+        frame.getContentPane().add(standardRollers);
+        standardRollers.addActionListener(e -> {
+            numType = 1;
+        });
+
+        JButton squareRollers = new JButton("Square Rollers");
+        squareRollers.setBounds(310, height + 160, 200, 50);
+        frame.getContentPane().add(squareRollers);
+        squareRollers.addActionListener(e -> {
+            numType = 2;
+        });
+
+        JButton TriangleRollers = new JButton("Triangle Rollers");
+        TriangleRollers.setBounds(310, height + 220, 200, 50);
+        frame.getContentPane().add(TriangleRollers);
+        TriangleRollers.addActionListener(e -> {
+            numType = 3;
+        });
+
     }
 
     void setupButton(JButton button, String name, int x, int y) {
@@ -101,7 +143,7 @@ public class App {
             Image img = ImageIO.read(new File("src/res/" + name + ".png"));
             button.setIcon(new ImageIcon(img));
         } catch (Exception ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
 
         button.setBounds(x, y, 50, 50);

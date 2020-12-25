@@ -1,7 +1,7 @@
 package com.company;
 
-public enum Rollers {
+public enum  Rollers {
     Three,
-    Four, 
+    Four,
     Five
 }

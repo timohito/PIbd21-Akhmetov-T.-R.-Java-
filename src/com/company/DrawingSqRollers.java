@@ -3,7 +3,8 @@ package com.company;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
-public class DrawingRollers implements IDrawingRollers{
+public class DrawingSqRollers implements IDrawingRollers{
+
     private Rollers numRollers = Rollers.Five;
 
     @Override
@@ -25,21 +26,21 @@ public class DrawingRollers implements IDrawingRollers{
 
     @Override
     public void drawRollers(Graphics g, Color dopColor, int _startPosX, int _startPosY, boolean kovsh, boolean truba) {
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(dopColor);
+        //Graphics2D g2 = (Graphics2D)g;
+        g.setColor(dopColor);
         switch (numRollers) {
             case Five:
-                g2.draw(new Ellipse2D.Double(_startPosX + 40, _startPosY + 25, 20, 20));
+                g.drawRect(_startPosX + 40, _startPosY + 25, 20, 20);
 
             case Four:
-                g2.draw(new Ellipse2D.Double(_startPosX + 60, _startPosY + 25, 20, 20));
-				
+                g.drawRect(_startPosX + 60, _startPosY + 25, 20, 20);
+
             case Three:
-                g2.draw(new Ellipse2D.Double(_startPosX + 80, _startPosY + 25, 20, 20));
+                g.drawRect(_startPosX + 80, _startPosY + 25, 20, 20);
 
             default:
-                g2.draw(new Ellipse2D.Double(_startPosX, _startPosY + 25, 20, 20));
-                g2.draw(new Ellipse2D.Double(_startPosX + 20, _startPosY + 25, 20, 20));
+                g.drawRect(_startPosX, _startPosY + 25, 20, 20);
+                g.drawRect(_startPosX + 20, _startPosY + 25, 20, 20);
                 break;
         }
     }
