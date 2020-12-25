@@ -33,7 +33,7 @@ public class DrawingRollers implements IDrawingRollers{
 
             case Four:
                 g2.draw(new Ellipse2D.Double(_startPosX + 60, _startPosY + 25, 20, 20));
-				
+
             case Three:
                 g2.draw(new Ellipse2D.Double(_startPosX + 80, _startPosY + 25, 20, 20));
 

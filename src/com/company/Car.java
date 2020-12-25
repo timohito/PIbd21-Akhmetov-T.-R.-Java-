@@ -58,7 +58,7 @@ public class Car extends Vehicle {
     @Override
     public void drawTransport(Graphics g)
     {
-        g.setColor(mainColor); // cusov
+        g.setColor(mainColor);
         g.drawRect(_startPosX, _startPosY, 100, 45);
         g.drawRect(_startPosX + 20, _startPosY - 30, 30, 30);
 
