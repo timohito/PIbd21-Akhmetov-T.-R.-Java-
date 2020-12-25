@@ -82,9 +82,6 @@ public class Bulldozer {
 		g2.draw(new Ellipse2D.Double(_startPosX, _startPosY + 25, 100, 20));
 		g2.draw(new Ellipse2D.Double( _startPosX, _startPosY + 25, 20, 20));
 		g2.draw(new Ellipse2D.Double(_startPosX + 20, _startPosY + 25, 20, 20));
-//		g2.draw(new Ellipse2D.Double(_startPosX + 40, _startPosY + 25, 20, 20));
-//		g2.draw(new Ellipse2D.Double(_startPosX + 60, _startPosY + 25, 20, 20));
-//		g2.draw(new Ellipse2D.Double(_startPosX + 80, _startPosY + 25, 20, 20));
         if (truba) {
         	g.setColor(mainColor);
             g.fillRect(_startPosX + 80, _startPosY - 15, 5, 15);    

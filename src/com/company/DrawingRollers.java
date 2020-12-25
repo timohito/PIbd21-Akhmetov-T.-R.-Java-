@@ -41,7 +41,4 @@ class DrawingRollers {
             break;
         }
     }
-
-   
-
 }
