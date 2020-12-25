@@ -26,7 +26,6 @@ public class DrawingSqRollers implements IDrawingRollers{
 
     @Override
     public void drawRollers(Graphics g, Color dopColor, int _startPosX, int _startPosY, boolean kovsh, boolean truba) {
-        //Graphics2D g2 = (Graphics2D)g;
         g.setColor(dopColor);
         switch (numRollers) {
             case Five:
