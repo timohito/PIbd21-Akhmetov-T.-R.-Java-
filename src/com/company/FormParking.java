@@ -99,50 +99,5 @@ public class FormParking {
         });
         takeCar.setBounds(20, 30, 100, 50);
         groupPanel.add(takeCar);
-
-//        JPanel groupPanelGuess = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-//        groupPanelGuess.setBorder(BorderFactory.createTitledBorder("Угадайка"));
-//        groupPanelGuess.setBounds(width + 20, 300, 300, 150);
-//        frame.getContentPane().add(groupPanelGuess);
-//        JLabel amountLabel = new JLabel("Количество:");
-//        groupPanelGuess.add(amountLabel);
-//        JTextField amountTextField = new JTextField(2);
-//        amountTextField.setFont(amountTextField.getFont().deriveFont(20f));
-//        amountTextField.setBounds(20, 10, 100, 20);
-//        groupPanelGuess.add(amountTextField);
-//        JButton guessOccupied = new JButton("Предположить сколько мест занято");
-//        guessOccupied.addActionListener(e -> {
-//            if (!amountTextField.getText().equals("")) {
-//                int amountPlaces;
-//                try {
-//                    amountPlaces = Integer.parseInt(amountTextField.getText());
-//                } catch (Exception ex) {
-//                    return;
-//                }
-//                if (parking.equalOrMore(amountPlaces))
-//                    JOptionPane.showMessageDialog(frame, "Вы угадали! Автобусов на автовокзале " + amountPlaces, "Результат", JOptionPane.INFORMATION_MESSAGE);
-//                else
-//                    JOptionPane.showMessageDialog(frame, "Вы не угадали!", "Результат", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        });
-//        guessOccupied.setBounds(20, 30, 100, 50);
-//        groupPanelGuess.add(guessOccupied);
-//        JButton guessFreeButton = new JButton("Предположить сколько мест свободно");
-//        guessFreeButton.addActionListener(e -> {
-//            if (!amountTextField.getText().equals("")) {
-//                int amountPlaces;
-//                try {
-//                    amountPlaces = Integer.parseInt(amountTextField.getText());
-//                } catch (Exception ex) {
-//                    return;
-//                }
-//                if (parking.equalOrLess(amountPlaces))
-//                    JOptionPane.showMessageDialog(frame, "Вы угадали! Свободных мест на автовокзале " + amountPlaces, "Результат", JOptionPane.INFORMATION_MESSAGE);
-//                else
-//                    JOptionPane.showMessageDialog(frame, "Вы не угадали!", "Результат", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        });
-//        guessFreeButton.setBounds(20, 30, 100, 50);
-//        groupPanelGuess.add(guessFreeButton);
     }
 }
